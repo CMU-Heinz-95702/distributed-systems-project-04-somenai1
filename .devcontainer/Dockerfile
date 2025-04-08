@@ -1,8 +1,10 @@
 # Use Tomcat 11 with Java 21
 FROM tomcat:11.0.0-M24-jdk21-temurin-noble
 
+# Remove former ROOT webapp
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-# Copy my ROOT.war into Tomcat's webapps folder
+# Copy the extracted ROOT directory into Tomcat's webapps folder
 COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose port 8080
